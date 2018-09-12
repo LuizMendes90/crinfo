@@ -1,0 +1,2 @@
+# crinfo
+Clash Royale Info
