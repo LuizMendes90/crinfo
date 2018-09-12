@@ -108,7 +108,7 @@ class Database extends InfoDB
             $arrayRetorno['MSN'] = "";
 
         } catch (\PDOException $Exception) {
-
+// echo $Exception->getMessage();
             $arrayErro = verificarErro($Exception->getCode());
             $arrayRetorno['status'] = false;
             $arrayRetorno['result'] = "";
