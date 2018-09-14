@@ -224,14 +224,6 @@ interact_fields_cliente['razao_social'] = '';
 interact_fields_cliente['nome_reduzido'] = '';
 interact_fields_cliente['cnpj'] = '';
 
-$(document).on("change", "#id_cliente,#id_cliente_final", function () {
-    valor = $(this).val();
-    if (valor == "adicionar_cliente") {
-
-        $(".modal_cliente").modal('show');
-    }
-})
-
 function create_cliente(formData) {
 
     formData.append('action', "Cliente");
