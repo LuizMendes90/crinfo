@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 14, 2018 at 06:21 PM
+-- Generation Time: Sep 15, 2018 at 06:47 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -65,6 +65,26 @@ INSERT INTO `grupo_permissoes` (`id`, `grupo`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `habilidades`
+--
+
+CREATE TABLE `habilidades` (
+  `id` int(11) NOT NULL,
+  `habilidade` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` char(1) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `habilidades`
+--
+
+INSERT INTO `habilidades` (`id`, `habilidade`, `descricao`, `status`) VALUES
+(1, 'Dano em área', 'Dano', 'A');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menus`
 --
 
@@ -104,14 +124,36 @@ CREATE TABLE `permissoes_tela` (
 
 INSERT INTO `permissoes_tela` (`id`, `id_sub_menu`, `id_grupo`) VALUES
 (1385, NULL, 0),
-(1399, 59, 20),
-(1400, 58, 20),
-(1401, 60, 20),
-(1402, 5, 20),
-(1403, 6, 20),
-(1404, 32, 20),
-(1405, 33, 20),
-(1406, 7, 20);
+(1416, 62, 20),
+(1417, 59, 20),
+(1418, 61, 20),
+(1419, 58, 20),
+(1420, 60, 20),
+(1421, 6, 20),
+(1422, 5, 20),
+(1423, 32, 20),
+(1424, 33, 20),
+(1425, 7, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personagens`
+--
+
+CREATE TABLE `personagens` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` char(1) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `personagens`
+--
+
+INSERT INTO `personagens` (`id`, `nome`, `descricao`, `status`) VALUES
+(1, 'Goblin', 'Personagem Verde', 'A');
 
 -- --------------------------------------------------------
 
@@ -161,7 +203,9 @@ INSERT INTO `sub_menus` (`id`, `id_menu`, `subMenu`, `nomeArquivo`, `status`) VA
 (33, 18, 'Grupo', 'grupoPermissao', 'A'),
 (58, 21, 'Cartas', 'carta', 'A'),
 (59, 21, 'Raridade', 'raridade', 'A'),
-(60, 21, 'Tipo', 'tipo', 'A');
+(60, 21, 'Tipo', 'tipo', 'A'),
+(61, 21, 'Personagens', 'personagem', 'A'),
+(62, 21, 'Habilidades', 'habilidade', 'A');
 
 -- --------------------------------------------------------
 
@@ -222,6 +266,13 @@ ALTER TABLE `grupo_permissoes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `habilidades`
+--
+ALTER TABLE `habilidades`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `habilidade_UNIQUE` (`habilidade`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
@@ -232,6 +283,12 @@ ALTER TABLE `menus`
 --
 ALTER TABLE `permissoes_tela`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `personagens`
+--
+ALTER TABLE `personagens`
+  ADD PRIMARY KEY (`id`,`nome`);
 
 --
 -- Indexes for table `raridades`
@@ -275,6 +332,12 @@ ALTER TABLE `grupo_permissoes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT for table `habilidades`
+--
+ALTER TABLE `habilidades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
@@ -284,7 +347,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `permissoes_tela`
 --
 ALTER TABLE `permissoes_tela`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1407;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1426;
+
+--
+-- AUTO_INCREMENT for table `personagens`
+--
+ALTER TABLE `personagens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `raridades`
@@ -296,7 +365,7 @@ ALTER TABLE `raridades`
 -- AUTO_INCREMENT for table `sub_menus`
 --
 ALTER TABLE `sub_menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tipos`
