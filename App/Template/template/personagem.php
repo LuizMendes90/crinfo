@@ -23,6 +23,7 @@
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Status</th>
+                        <th>Habilidades</th>
                         <th>Alterar</th>
                         <th>Deletar</th>
                     </tr>
@@ -35,6 +36,7 @@
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Status</th>
+                        <th>Habilidades</th>
                         <th>Alterar</th>
                         <th>Deletar</th>
                     </tr>
@@ -43,6 +45,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade modal_principal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -85,11 +88,70 @@
                     </div>
 
                     <input type="hidden" id="id">
+                    <input type="hidden" id="id_personagem">
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary save">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal_habilidades" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"> Habilidades </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left input_mask" id="form-habilidade" method='POST'
+                      enctype="multipart/form-data">
+
+                    <div class="col-md-5 col-sm-5 col-xs-5 form-group has-feedback">
+                        <label>
+                            Habilidade                            
+                        </label>
+                        <select class="select2_single form-control" id="id_habilidade">
+                        </select>
+                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+
+                    </div>
+                    
+                     <div class="col-md-5 col-sm-5 col-xs-5 form-group has-feedback">
+                        <label>
+                            Valor
+                        </label>
+                        <input type="text" class="form-control has-feedback-left" id="valor"
+                               placeholder="Valor">
+                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+
+                    </div>
+
+                     <div class="col-md-1 col-sm-1 col-xs-1 form-group has-feedback">
+                     <label>
+                            &nbsp;.
+                    </label>
+                    <div>
+                    <a class="add_habilidade">
+                            <i class="fa fa-plus">
+                            </i>
+                        </a>
+                    </div>                   
+                    
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
