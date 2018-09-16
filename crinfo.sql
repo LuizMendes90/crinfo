@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 15, 2018 at 06:47 PM
+-- Generation Time: Sep 17, 2018 at 01:23 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -109,6 +109,26 @@ INSERT INTO `menus` (`id`, `menu`, `status`, `icone`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `niveis`
+--
+
+CREATE TABLE `niveis` (
+  `id` int(11) NOT NULL,
+  `nivel` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `descricao` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` char(1) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `niveis`
+--
+
+INSERT INTO `niveis` (`id`, `nivel`, `descricao`, `status`) VALUES
+(3, '1', 'Primeiro nível', 'A');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `permissoes_tela`
 --
 
@@ -124,16 +144,37 @@ CREATE TABLE `permissoes_tela` (
 
 INSERT INTO `permissoes_tela` (`id`, `id_sub_menu`, `id_grupo`) VALUES
 (1385, NULL, 0),
-(1416, 62, 20),
-(1417, 59, 20),
-(1418, 61, 20),
-(1419, 58, 20),
-(1420, 60, 20),
-(1421, 6, 20),
-(1422, 5, 20),
-(1423, 32, 20),
-(1424, 33, 20),
-(1425, 7, 20);
+(1426, 63, 20),
+(1427, 60, 20),
+(1428, 62, 20),
+(1429, 59, 20),
+(1430, 61, 20),
+(1431, 58, 20),
+(1432, 6, 20),
+(1433, 5, 20),
+(1434, 33, 20),
+(1435, 32, 20),
+(1436, 7, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personagem_habilidades`
+--
+
+CREATE TABLE `personagem_habilidades` (
+  `id_personagem` int(11) NOT NULL,
+  `id_habilidade` int(11) NOT NULL,
+  `id_nivel` int(11) NOT NULL,
+  `valor` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `personagem_habilidades`
+--
+
+INSERT INTO `personagem_habilidades` (`id_personagem`, `id_habilidade`, `id_nivel`, `valor`) VALUES
+(1, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -205,7 +246,8 @@ INSERT INTO `sub_menus` (`id`, `id_menu`, `subMenu`, `nomeArquivo`, `status`) VA
 (59, 21, 'Raridade', 'raridade', 'A'),
 (60, 21, 'Tipo', 'tipo', 'A'),
 (61, 21, 'Personagens', 'personagem', 'A'),
-(62, 21, 'Habilidades', 'habilidade', 'A');
+(62, 21, 'Habilidades', 'habilidade', 'A'),
+(63, 21, 'Níveis', 'nivel', 'A');
 
 -- --------------------------------------------------------
 
@@ -279,10 +321,23 @@ ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `niveis`
+--
+ALTER TABLE `niveis`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nivel_UNIQUE` (`nivel`);
+
+--
 -- Indexes for table `permissoes_tela`
 --
 ALTER TABLE `permissoes_tela`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `personagem_habilidades`
+--
+ALTER TABLE `personagem_habilidades`
+  ADD PRIMARY KEY (`id_personagem`,`id_habilidade`,`id_nivel`);
 
 --
 -- Indexes for table `personagens`
@@ -344,10 +399,16 @@ ALTER TABLE `menus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `niveis`
+--
+ALTER TABLE `niveis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `permissoes_tela`
 --
 ALTER TABLE `permissoes_tela`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1426;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1437;
 
 --
 -- AUTO_INCREMENT for table `personagens`
@@ -365,7 +426,7 @@ ALTER TABLE `raridades`
 -- AUTO_INCREMENT for table `sub_menus`
 --
 ALTER TABLE `sub_menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `tipos`

@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 require_once CORE . DS . 'Controller.php';
-require_once MODEL . DS . 'Habilidade.php';
-require_once VIEW . DS . 'Habilidade.php';
+require_once MODEL . DS . 'Nivel.php';
+require_once VIEW . DS . 'Nivel.php';
 
 use App\Core\Controller;
 use App\Core\Model;
-use App\Model\Habilidade as Habilidade_Model;
-use App\View\Habilidade as Habilidade_View;
+use App\Model\Nivel as Nivel_Model;
+use App\View\Nivel as Nivel_View;
 
-class Habilidade extends Controller
+class Nivel extends Controller
 {
 
     private $oModel;
@@ -21,9 +21,9 @@ class Habilidade extends Controller
     {
         parent::__construct();
 
-        $this->oModel = new Habilidade_Model();
+        $this->oModel = new Nivel_Model();
 
-        $this->oView = new Habilidade_View();
+        $this->oView = new Nivel_View();
     }
 
     public function render()
