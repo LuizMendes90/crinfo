@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 17, 2018 at 01:23 AM
+-- Generation Time: Sep 17, 2018 at 10:45 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -124,7 +124,8 @@ CREATE TABLE `niveis` (
 --
 
 INSERT INTO `niveis` (`id`, `nivel`, `descricao`, `status`) VALUES
-(3, '1', 'Primeiro nível', 'A');
+(3, '1', 'Primeiro nível', 'A'),
+(4, '2', 'Segundo nivel', 'A');
 
 -- --------------------------------------------------------
 
@@ -174,7 +175,10 @@ CREATE TABLE `personagem_habilidades` (
 --
 
 INSERT INTO `personagem_habilidades` (`id_personagem`, `id_habilidade`, `id_nivel`, `valor`) VALUES
-(1, 1, 0, NULL);
+(1, 1, 3, '123'),
+(1, 1, 4, '123'),
+(2, 1, 3, '123'),
+(2, 1, 4, '123');
 
 -- --------------------------------------------------------
 
@@ -194,7 +198,8 @@ CREATE TABLE `personagens` (
 --
 
 INSERT INTO `personagens` (`id`, `nome`, `descricao`, `status`) VALUES
-(1, 'Goblin', 'Personagem Verde', 'A');
+(1, 'Goblin', 'Personagem Verde', 'A'),
+(2, 'Gigante', 'Grande', 'A');
 
 -- --------------------------------------------------------
 
@@ -390,7 +395,7 @@ ALTER TABLE `grupo_permissoes`
 -- AUTO_INCREMENT for table `habilidades`
 --
 ALTER TABLE `habilidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -402,7 +407,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `niveis`
 --
 ALTER TABLE `niveis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `permissoes_tela`
@@ -414,7 +419,7 @@ ALTER TABLE `permissoes_tela`
 -- AUTO_INCREMENT for table `personagens`
 --
 ALTER TABLE `personagens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `raridades`

@@ -162,20 +162,24 @@ class PersonagemHabilidade extends Model
     public function getAllJoin()
     {
 
-        $sql = "SELECT hab_per.*,per.nome,hab.habilidade,niv.nivel FROM `" . $this->table."` hab_per
+       $sql = "SELECT hab_per.*,per.nome,hab.habilidade,niv.nivel FROM `" . $this->table."` hab_per
                 INNER JOIN personagens per
                 ON hab_per.id_personagem = per.id
                 INNER JOIN habilidades hab
                 ON hab_per.id_habilidade = hab.id
                 INNER JOIN niveis niv
-                ON hab_per.id_nivel = niv.id";
+                ON hab_per.id_nivel = niv.id
+                WHERE hab_per.id_personagem = :id_personagem order by niv.nivel asc";
 
         $query = $this->dbh->prepare($sql);
+
+        $query->bindValue(':id_personagem', $this->id_personagem, PDO::PARAM_STR);
 
         $result = Database::executa($query);
 
         if ($result['status'] && $result['count']) {
             for ($i = 0; $linha = $query->fetch(PDO::FETCH_ASSOC); $i++) {
+                $array[$i]['id_personagem'] = $linha['id_personagem'];
                 $array[$i]['personagem'] = $linha['nome'];
                 $array[$i]['habilidade'] = $linha['habilidade'];
                 $array[$i]['nivel'] = $linha['nivel'];
@@ -192,9 +196,10 @@ class PersonagemHabilidade extends Model
     public function delete()
     {
        
-        $this->validator->set('Personagem', $this->id_personagem)->is_required();
-        $this->validator->set('Habilidade', $this->id_habilidade)->is_required();
-        $this->validator->set('Nivel', $this->id_nivel)->is_required();
+
+        $this->validator->set('Personagem', $this->id_personagem_habilidade)->is_required();
+        $this->validator->set('Habilidade', $this->id_habilidade_habilidade)->is_required();
+        $this->validator->set('Nivel', $this->id_nivel_habilidade)->is_required();
 
         $validate = $this->validator->validate();
         $erros = $this->validator->get_errors();
@@ -205,15 +210,16 @@ class PersonagemHabilidade extends Model
             return $result;
         }
 
-        $sql = "DELETE FROM `" . $this->table . "` 
-                WHERE T1.id_personagem = :id_personagem and T1.id_habilidade = :id_habilidade and T1.id_nivel = :id_nivel";
+          $sql = "DELETE FROM `" . $this->table . "` 
+                WHERE id_personagem = :id_personagem_habilidade and id_habilidade = :id_habilidade_habilidade and id_nivel = :id_nivel_habilidade";
 
         $query = $this->dbh->prepare($sql);
 
-        
-        $query->bindValue(':id_personagem', $this->id_personagem, PDO::PARAM_STR);
-        $query->bindValue(':id_habilidade', $this->id_habilidade, PDO::PARAM_INT);
-        $query->bindValue(':id_nivel', $this->id_nivel, PDO::PARAM_INT);
+     
+
+        $query->bindValue(':id_personagem_habilidade', $this->id_personagem_habilidade, PDO::PARAM_STR);
+        $query->bindValue(':id_habilidade_habilidade', $this->id_habilidade_habilidade, PDO::PARAM_INT);
+        $query->bindValue(':id_nivel_habilidade', $this->id_nivel_habilidade, PDO::PARAM_INT);
 
         $result = Database::executa($query);
 

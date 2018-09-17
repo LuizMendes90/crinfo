@@ -79,8 +79,11 @@ class PersonagemHabilidade extends Controller
     }
 
 
-    public function getAllJoin()
+    public function getAllJoin($object)
     {
+
+        $this->oModel->populate($object);
+
         $result = $this->oModel->getAllJoin();
 
         echo json_encode($result);

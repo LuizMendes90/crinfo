@@ -99,6 +99,9 @@
     </div>
 </div>
 
+<input type="hidden" id="id_personagem_habilidade">
+<input type="hidden" id="id_nivel_habilidade">
+<input type="hidden" id="id_habilidade_habilidade">
 
 <div class="modal fade modal_habilidades" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">

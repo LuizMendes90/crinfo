@@ -9,9 +9,16 @@ interact_fields['descricao'] = '';
 interact_fields['status'] = '';
 
 interact_fields_habilidade['id_personagem'] = '';
-interact_fields_habilidade['id_habilidade'] = '';
 interact_fields_habilidade['id_nivel'] = '';
+interact_fields_habilidade['id_habilidade'] = '';
+interact_fields_habilidade['id_personagem_habilidade'] = '';
+interact_fields_habilidade['id_nivel_habilidade'] = '';
+interact_fields_habilidade['id_habilidade_habilidade'] = '';
 interact_fields_habilidade['valor'] = '';
+
+
+
+
 
 function grid() {
     $('#table_principal').DataTable().destroy();
@@ -58,7 +65,8 @@ function grid() {
 
 
 function grid_habilidades() {
-    $('#table_principal').DataTable().destroy();
+
+    $('#table_habilidade').DataTable().destroy();
 
     $.ajax({
         url: urlApp,
@@ -67,7 +75,8 @@ function grid_habilidades() {
         data: {
 
             action: 'PersonagemHabilidade',
-            method: 'getAllJoin'
+            method: 'getAllJoin',
+            id_personagem: $("#id_personagem").val()
 
         }, success: function (data) {
 
@@ -75,7 +84,7 @@ function grid_habilidades() {
 
             if (data.count) {
 
-                tbody = '';
+                tbody = "";
 
                 $.each(data.result, function (key, value) {
 
@@ -89,13 +98,14 @@ function grid_habilidades() {
                         '</tr>';
                 });
 
-                $('.grid_habilidades').html(tbody);
+                
             } else if (data.MSN) {
                 mensagem('Erro', data.msnErro, '', '');
             }
+            $('.grid_habilidades').html(tbody);
         }
     }).done(function () {
-        $('#table_principal').DataTable();
+        $('#table_habilidade').DataTable();
     });
 
 }
@@ -239,7 +249,7 @@ function create_habilidade(formData) {
             if (data.result) {
                 mensagem('OK', 'Cadastrado', 'success', '');
                 clear_field('#form-habilidade');
-                grid();
+                grid_habilidades();
             } else if (data.validar) {
                 $.each(data.validar, function (key, value) {
                     mensagem('Atenção', value, 'warning', '');
@@ -255,6 +265,44 @@ function create_habilidade(formData) {
         contentType: false
     }).done(function () {
 
+    });
+}
+
+
+function removeHabilidade(formData) {
+
+    formData.append('action', "PersonagemHabilidade");
+
+    formData.append('method', "delete");
+
+    $.ajax({
+        url: urlApp,
+        type: 'POST',
+        dataType: 'JSON',
+        data: formData,
+        success: function (data) {
+            if (data.validar) {
+                $.each(data.validar, function (key, value) {
+                    mensagem('Atenção', value, 'warning', '');
+
+                })
+
+            } else if (data.result) {
+
+                mensagem('OK', 'Removido', 'success', '');
+
+            } else if (data.MSN) {
+
+                mensagem('Erro', data.msnErro, '', '');
+
+            }
+        },
+        processData: false,
+        cache: false,
+        contentType: false
+    }).done(function () {
+        
+        grid_habilidades();
     });
 }
 
@@ -383,11 +431,12 @@ $(document).on("click",".habilidades",function(){
 
     loadHabilidades();
     loadNiveis();
-    grid_habilidades();
-
+    
     dataId = $(this).data('id');
 
     $("#id_personagem").val(dataId);
+
+    grid_habilidades();
 
     $(".modal_habilidades").modal('show');
 
@@ -430,6 +479,28 @@ $(document).ready(function () {
         }
     });
 
+
+    $(document).on('click', '.delete_habilidade_personagem', function () {
+
+        datapersonagem = $(this).data('idpersonagem');
+        datanivel = $(this).data('idnivel');                                  
+        datahabilidade = $(this).data('idhabilidade');
+
+        $("#id_personagem_habilidade").val(datapersonagem);
+        $("#id_habilidade_habilidade").val(datahabilidade);
+        $("#id_nivel_habilidade").val(datanivel);
+
+        if (confirm("Remover o registro?")) {
+            $("#id").val(dataId);
+
+            var formData = new FormData();
+
+            formData = load_fields(formData, interact_fields_habilidade);
+
+            removeHabilidade(formData);
+        }
+    });
+    
     $(document).on('click', '.update', function () {
 
         dataId = $(this).data('id');
