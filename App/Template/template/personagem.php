@@ -114,7 +114,7 @@
                 <form class="form-horizontal form-label-left input_mask" id="form-habilidade" method='POST'
                       enctype="multipart/form-data">
 
-                    <div class="col-md-5 col-sm-5 col-xs-5 form-group has-feedback">
+                    <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
                         <label>
                             Habilidade                            
                         </label>
@@ -124,7 +124,18 @@
 
                     </div>
                     
-                     <div class="col-md-5 col-sm-5 col-xs-5 form-group has-feedback">
+                    <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback">
+                      
+                        <label>
+                            Nivel                            
+                        </label>
+                        <select class="select2_single form-control" id="id_nivel">
+                        </select>
+                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+
+                    </div>
+
+                     <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
                         <label>
                             Valor
                         </label>
@@ -134,22 +145,48 @@
 
                     </div>
 
-                     <div class="col-md-1 col-sm-1 col-xs-1 form-group has-feedback">
-                     <label>
-                            &nbsp;.
-                    </label>
-                    <div>
-                    <a class="add_habilidade">
+                     <div class="col-md-2 col-sm-2 col-xs-2 form-group has-feedback">
+                        <label>
+                                &nbsp;.
+                        </label>
+                        <a class="add_habilidade">
                             <i class="fa fa-plus">
                             </i>
                         </a>
-                    </div>                   
-                    
+                    </div>        
 
+                    <div class="row col-md-12 col-sm-12 col-xs-12 form-group has-feedback">           
+                        <div class="x_content">
+                            <table id="table_habilidade"
+                                class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                                width="100%">
+                                <thead>
+                                <tr>
+                                    <th>Personagem</th>
+                                    <th>Nível</th>
+                                    <th>Habilidade</th>
+                                    <th>Valors</th>
+                                    <th>Alterar</th>
+                                    <th>Deletar</th>
+                                </tr>
+                                </thead>
+                                <tbody class='grid_habilidades'>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Personagem</th>
+                                    <th>Nível</th>
+                                    <th>Habilidade</th>
+                                    <th>Valors</th>
+                                    <th>Alterar</th>
+                                    <th>Deletar</th>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-
-                </form>
-            </div>
+                </div>
+            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>

@@ -10,6 +10,8 @@ interact_fields['status'] = '';
 
 interact_fields_habilidade['id_personagem'] = '';
 interact_fields_habilidade['id_habilidade'] = '';
+interact_fields_habilidade['id_nivel'] = '';
+interact_fields_habilidade['valor'] = '';
 
 function grid() {
     $('#table_principal').DataTable().destroy();
@@ -54,6 +56,50 @@ function grid() {
 
 }
 
+
+function grid_habilidades() {
+    $('#table_principal').DataTable().destroy();
+
+    $.ajax({
+        url: urlApp,
+        type: 'POST',
+        dataType: 'JSON',
+        data: {
+
+            action: 'PersonagemHabilidade',
+            method: 'getAllJoin'
+
+        }, success: function (data) {
+
+            tbody = '';
+
+            if (data.count) {
+
+                tbody = '';
+
+                $.each(data.result, function (key, value) {
+
+                    tbody += '<tr>' +
+                        '<td width="60%">' + value.personagem + '</td>' +
+                        '<td width="10%">' + value.nivel + '</td>' +
+                        '<td width="10%">' + value.habilidade + '</td>' +
+                        '<td width="10%">' + value.valor + '</td>' +
+                        '<td width="10%" class="update_habilidade_personagem" data-idpersonagem="' + value.id_personagem + '" data-idhabilidade="' + value.id_habilidade + '" data-idnivel="' + value.id_nivel + '"></td>' +
+                        '<td width="10%" class="delete_habilidade_personagem" data-idpersonagem="' + value.id_personagem + '" data-idhabilidade="' + value.id_habilidade + '" data-idnivel="' + value.id_nivel + '"></td>' +
+                        '</tr>';
+                });
+
+                $('.grid_habilidades').html(tbody);
+            } else if (data.MSN) {
+                mensagem('Erro', data.msnErro, '', '');
+            }
+        }
+    }).done(function () {
+        $('#table_principal').DataTable();
+    });
+
+}
+
 function loadHabilidades() {
     var formData = new FormData();
 
@@ -79,6 +125,51 @@ function loadHabilidades() {
                 });
 
                 $("#id_habilidade").html(option);
+
+            } else if (data.MSN) {
+                mensagem('Erro', data.msnErro, '', '');
+            }
+        },
+
+        processData: false,
+        cache: false,
+        contentType: false
+    }).done(function () {
+        $(".select2_single").select2({
+            placeholder: "Selecione",
+            allowClear: true
+        });
+    });
+
+}
+
+
+function loadNiveis() {
+
+    var formData = new FormData();
+
+    formData = load_fields(formData, interact_fields);
+
+    formData.append('action', "Nivel");
+
+    formData.append('method', "getAll");
+
+    $.ajax({
+        url: urlApp,
+        type: 'POST',
+        dataType: 'JSON',
+        data: formData,
+        success: function (data) {
+
+            option = '';
+
+            if (data.count) {
+
+                $.each(data.result, function (key, value) {
+                    option += '<option value="' + value.id + '" >' + value.nivel + '</option>';
+                });
+
+                $("#id_nivel").html(option);
 
             } else if (data.MSN) {
                 mensagem('Erro', data.msnErro, '', '');
@@ -291,6 +382,8 @@ $("#form-principal").submit(function (e) {
 $(document).on("click",".habilidades",function(){
 
     loadHabilidades();
+    loadNiveis();
+    grid_habilidades();
 
     dataId = $(this).data('id');
 

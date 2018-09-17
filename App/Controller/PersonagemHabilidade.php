@@ -78,6 +78,14 @@ class PersonagemHabilidade extends Controller
         echo json_encode($result);
     }
 
+
+    public function getAllJoin()
+    {
+        $result = $this->oModel->getAllJoin();
+
+        echo json_encode($result);
+    }
+
     public function getById($object)
     {
 
