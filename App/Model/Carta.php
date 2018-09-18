@@ -37,14 +37,15 @@ class Carta extends Model
             return $result;
         }
 
-         $sql = "INSERT INTO `" . $this->table . "` (nome,custo,descricao,status) 
+         $sql = "INSERT INTO `" . $this->table . "` (nome,custo,descricao,id_raridade,status) 
                                                 VALUES 
-                                                (:nome,:custo,:descricao,:status)";
+                                                (:nome,:custo,:descricao,:id_raridade,:status)";
 
         $query = $this->dbh->prepare($sql);
 
         $query->bindValue(':nome', $this->nome, PDO::PARAM_STR);
         $query->bindValue(':custo', $this->custo, PDO::PARAM_INT);
+        $query->bindValue(':id_raridade', $this->id_raridade, PDO::PARAM_INT);
         $query->bindValue(':descricao', $this->descricao, PDO::PARAM_STR);
         $query->bindValue(':status', $this->status, PDO::PARAM_STR_CHAR);
 
@@ -73,6 +74,7 @@ class Carta extends Model
                 SET 
                 nome = :nome,
                 custo = :custo,
+                id_raridade = :id_raridade,
                 descricao = :descricao,
                 status = :status 
                 WHERE id = :id";
@@ -82,6 +84,7 @@ class Carta extends Model
         $query->bindValue(':id', $this->id, PDO::PARAM_STR);
         $query->bindValue(':nome', $this->nome, PDO::PARAM_STR);
         $query->bindValue(':custo', $this->custo, PDO::PARAM_STR);
+        $query->bindValue(':id_raridade', $this->id_raridade, PDO::PARAM_STR);
         $query->bindValue(':descricao', $this->descricao, PDO::PARAM_STR);
         $query->bindValue(':status', $this->status, PDO::PARAM_STR);
 
@@ -118,6 +121,7 @@ class Carta extends Model
             for ($i = 0; $linha = $query->fetch(PDO::FETCH_ASSOC); $i++) {
                 $array['id'] = $linha['id'];
                 $array['nome'] = $linha['nome'];
+                $array['id_raridade'] = $linha['id_raridade'];
                 $array['custo'] = $linha['custo'];
                 $array['descricao'] = $linha['descricao'];
                 $array['status'] = $linha['status'];
@@ -131,7 +135,9 @@ class Carta extends Model
     public function getAll()
     {
 
-        $sql = "SELECT * FROM `" . $this->table."`";
+        $sql = "SELECT car.*,rar.nome as raridade FROM `" . $this->table."` car
+                INNER JOIN raridades rar
+                ON car.id_raridade = rar.id";
 
         $query = $this->dbh->prepare($sql);
 
@@ -141,7 +147,9 @@ class Carta extends Model
             for ($i = 0; $linha = $query->fetch(PDO::FETCH_ASSOC); $i++) {
                 $array[$i]['id'] = $linha['id'];
                 $array[$i]['nome'] = $linha['nome'];
+                $array[$i]['raridade'] = $linha['raridade'];
                 $array[$i]['custo'] = $linha['custo'];
+                $array[$i]['id_raridade'] = $linha['id_raridade'];
                 $array[$i]['descricao'] = $linha['descricao'];
                 $array[$i]['status'] = $linha['status'];
             }

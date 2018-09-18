@@ -23,6 +23,7 @@
                         <th>Nome</th>
                         <th>Custo</th>
                         <th>Descrição</th>
+                        <th>Raridade</th>
                         <th>Status</th>
                         <th>Composição</th>
                         <th>Alterar</th>
@@ -37,6 +38,7 @@
                         <th>Nome</th>
                         <th>Custo</th>
                         <th>Descrição</th>
+                        <th>Raridade</th>
                         <th>Status</th>
                         <th>Composição</th>
                         <th>Alterar</th>
@@ -68,6 +70,14 @@
                         <input type="text" class="form-control has-feedback-left" id="nome"
                                placeholder="Nome">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+
+                     <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                        <label>
+                            Raridade
+                        </label>
+                        <select class="select2_single form-control" id="id_raridade">
+                        </select>
 
                     </div>
 

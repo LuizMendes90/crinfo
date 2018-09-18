@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 18, 2018 at 10:20 PM
+-- Generation Time: Sep 18, 2018 at 11:07 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -33,16 +33,17 @@ CREATE TABLE `cartas` (
   `nome` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `custo` int(11) NOT NULL,
   `descricao` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `status` char(1) COLLATE utf8_unicode_ci NOT NULL
+  `status` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  `id_raridade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cartas`
 --
 
-INSERT INTO `cartas` (`id`, `nome`, `custo`, `descricao`, `status`) VALUES
-(1, 'Gigante', 6, 'forte 1', 'A'),
-(2, 'Lápide', 4, 'teste', 'A');
+INSERT INTO `cartas` (`id`, `nome`, `custo`, `descricao`, `status`, `id_raridade`) VALUES
+(1, 'Gigante', 6, 'forte 1', 'A', 2),
+(2, 'Lápide', 4, 'teste', 'A', 3);
 
 -- --------------------------------------------------------
 
@@ -410,7 +411,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `cartas`
 --
 ALTER TABLE `cartas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `grupo_permissoes`

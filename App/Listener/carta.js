@@ -8,6 +8,7 @@ interact_fields['nome'] = '';
 interact_fields['custo'] = '';
 interact_fields['descricao'] = '';
 interact_fields['status'] = '';
+interact_fields['id_raridade'] = '';
 
 interact_fields_composicao['id_carta'] = '';
 interact_fields_composicao['id_personagem'] = '';
@@ -40,6 +41,7 @@ function grid() {
                         '<td width="60%">' + value.nome + '</td>' +
                         '<td width="10%">' + value.custo + '</td>' +
                         '<td width="10%">' + value.descricao + '</td>' +
+                        '<td width="10%">' + value.raridade + '</td>' +
                         '<td width="10%">' + value.status + '</td>' +
                         '<td width="10%" class="composicao" data-id="' + value.id + '"></td>' +
                         '<td width="10%" class="update" data-id="' + value.id + '"></td>' +
@@ -102,6 +104,49 @@ function loadPersonagem() {
 
 }
 
+
+function loadRaridade() {
+    var formData = new FormData();
+
+    formData = load_fields(formData, interact_fields);
+
+    formData.append('action', "Raridade");
+
+    formData.append('method', "getAll");
+
+    $.ajax({
+        url: urlApp,
+        type: 'POST',
+        dataType: 'JSON',
+        data: formData,
+        success: function (data) {
+
+            option = '';
+
+            if (data.count) {
+
+                $.each(data.result, function (key, value) {
+                    option += '<option value="' + value.id + '" >' + value.nome + '</option>';
+                });
+
+                $("#id_raridade").html(option);
+
+            } else if (data.MSN) {
+                mensagem('Erro', data.msnErro, '', '');
+            }
+        },
+
+        processData: false,
+        cache: false,
+        contentType: false
+    }).done(function () {
+        $(".select2_single").select2({
+            placeholder: "Selecione",
+            allowClear: true
+        });
+    });
+
+}
 
 
 function grid_composicao() {
@@ -360,6 +405,10 @@ function load() {
         contentType: false
     }).done(function () {
         $(".modal_principal").modal('show');
+        $(".select2_single").select2({
+            placeholder: "Selecione",
+            allowClear: true
+        });
     });
 
 }
@@ -377,7 +426,7 @@ $("#form-principal").submit(function (e) {
 });
 
 $(document).ready(function () {
-
+    loadRaridade();
     grid();
 
     $(document).on("click",".composicao",function(){
