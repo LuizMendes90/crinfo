@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 17, 2018 at 10:45 PM
+-- Generation Time: Sep 18, 2018 at 10:20 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -41,7 +41,28 @@ CREATE TABLE `cartas` (
 --
 
 INSERT INTO `cartas` (`id`, `nome`, `custo`, `descricao`, `status`) VALUES
-(1, 'Gigante', 6, 'forte 1', 'A');
+(1, 'Gigante', 6, 'forte 1', 'A'),
+(2, 'Lápide', 4, 'teste', 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carta_composicoes`
+--
+
+CREATE TABLE `carta_composicoes` (
+  `id_carta` int(11) NOT NULL,
+  `id_personagem` int(11) NOT NULL,
+  `quantidade_personagem` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `carta_composicoes`
+--
+
+INSERT INTO `carta_composicoes` (`id_carta`, `id_personagem`, `quantidade_personagem`) VALUES
+(1, 2, 1),
+(2, 1, 123);
 
 -- --------------------------------------------------------
 
@@ -307,6 +328,12 @@ ALTER TABLE `cartas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `carta_composicoes`
+--
+ALTER TABLE `carta_composicoes`
+  ADD PRIMARY KEY (`id_carta`,`id_personagem`);
+
+--
 -- Indexes for table `grupo_permissoes`
 --
 ALTER TABLE `grupo_permissoes`
@@ -383,7 +410,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `cartas`
 --
 ALTER TABLE `cartas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `grupo_permissoes`
