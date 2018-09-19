@@ -89,7 +89,6 @@ function grid_habilidades() {
                 $.each(data.result, function (key, value) {
 
                     tbody += '<tr>' +
-                        '<td width="60%">' + value.personagem + '</td>' +
                         '<td width="10%">' + value.nivel + '</td>' +
                         '<td width="10%">' + value.habilidade + '</td>' +
                         '<td width="10%">' + value.valor + '</td>' +

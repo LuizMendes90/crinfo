@@ -110,7 +110,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel"> Habilidades </h4>
+                <h4 class="modal-title" id="myModalLabel"> Personagem </h4>
             </div>
             <div class="modal-body">
 
@@ -119,7 +119,7 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-4 form-group has-feedback">
                         <label>
-                            Habilidade                            
+                            Personagem                            
                         </label>
                         <select class="select2_single form-control" id="id_habilidade">
                         </select>
@@ -165,7 +165,6 @@
                                 width="100%">
                                 <thead>
                                 <tr>
-                                    <th>Personagem</th>
                                     <th>Nível</th>
                                     <th>Habilidade</th>
                                     <th>Valors</th>
@@ -178,7 +177,6 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Personagem</th>
                                     <th>Nível</th>
                                     <th>Habilidade</th>
                                     <th>Valors</th>
