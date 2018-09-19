@@ -55,7 +55,7 @@ CREATE TABLE `cartas` (
   `status` char(1) COLLATE utf8_unicode_ci NOT NULL,
   `id_raridade` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `cartas` (
 
 LOCK TABLES `cartas` WRITE;
 /*!40000 ALTER TABLE `cartas` DISABLE KEYS */;
-INSERT INTO `cartas` VALUES (1,'Gigante',6,'forte 1','A',2),(2,'Lápide',4,'teste','A',3);
+INSERT INTO `cartas` VALUES (8,'Esqueletos',1,'','A',1),(9,'Bola de Neve',2,'','A',1),(10,'Goblins',2,'','A',1),(11,'Zap',2,'','A',1),(12,'Morcegos',2,'','A',1),(13,'Espíritos de Fogo',2,'','A',1),(14,'Goblins Lanceiros',2,'','A',1),(15,'Canhão',3,'','A',1),(16,'Barril de Esqueletos',3,'','A',1),(17,'Bombardeiro',3,'','A',1),(18,'Flechas',3,'','A',1),(19,'Servos',3,'','A',1),(20,'Tesla',4,'','A',1),(21,'Morteiro',4,'','A',1),(22,'Patifes',5,'','A',1),(23,'Bárbaros',5,'','A',1),(24,'Horda de Servos',6,'','A',1),(25,'Barbáros de Elite',6,'','A',1),(26,'Gigante Real',6,'','A',1),(27,'Recrutas Reais',8,'','A',1),(28,'Golem de Gelo',2,'','A',2),(29,'Cura',3,'','A',2),(30,'Goblin com Dardo',3,'','A',2),(31,'Megasservo',3,'','A',2),(32,'Lápide',3,'','A',2),(33,'Corredor',4,'','A',2),(34,'Torre de Bombas',4,'','A',2),(35,'Valquíria',4,'','A',2),(36,'Aríete de Batalha',4,'','A',2),(37,'Fornalha',4,'','A',2),(38,'Mini P.E.K.K.A',4,'','A',2),(39,'Máquina Voadora',4,'','A',2),(40,'Bola de Fogo',4,'','A',2),(41,'Mosqueteira',4,'','A',2),(42,'Eletrocutadores',4,'','A',2),(43,'Torre Inferno',5,'','A',2),(44,'Cabana de Goblins',5,'','A',2),(45,'Gigante',5,'','A',2),(46,'Porcos Reais',5,'','A',2),(47,'Mago',5,'','A',2),(48,'Coletor de Elixir',6,'','A',2),(49,'Cabana de Bárbaros',6,'','A',2),(50,'Três Mosqueteiras',9,'','A',2),(51,'Espelho',0,'','A',4),(52,'Fúria',2,'','A',4),(53,'Barril de Bárbaro',2,'','A',4),(54,'Exército de Esqueletos',3,'','A',4),(55,'Clone',3,'','A',4),(56,'Guardas',3,'','A',4),(57,'Dragão Bebê',4,'','A',4),(58,'Gelo',4,'','A',4),(59,'Veneno',4,'','A',4),(60,'Príncipe das Trevas',4,'','A',4),(61,'Caçador',4,'','A',4),(62,'Príncipe',5,'','A',4),(63,'Carrinho de Canhão',5,'','A',4),(64,'Executor',5,'','A',4),(65,'Balão',5,'','A',4),(66,'Lançador',5,'','A',4),(67,'Bruxa',5,'','A',4),(68,'Goblin Gigante',6,'','A',4),(69,'Relâmpago',6,'','A',4),(70,'Esqueleto Gigante',6,'','A',4),(71,'X-Besta',6,'','A',4),(72,'P.E.K.K.A',7,'','A',4),(73,'Golem',8,'','A',4),(74,'Fantasma Real',3,'','A',3),(75,'Bandida',3,'','A',3),(76,'Mineiro',3,'','A',3),(77,'Mago de Gelo',3,'','A',3),(78,'Arqueiro Mágico',4,'','A',3),(79,'Mago Elétrico',4,'','A',3),(80,'Dragão Infernal',4,'','A',3),(81,'Lenhador',4,'','A',3),(82,'Bruxa Sombria',4,'','A',3),(83,'Cemitério',5,'','A',3),(84,'Sparky',6,'','A',3),(85,'Megacavaleiro',7,'','A',3),(86,'Lava Hound',7,'','A',3),(87,'Foguete',6,'','A',2),(88,'Tornado',3,'','A',4),(89,'Barril de Goblins',3,'','A',4),(90,'Gangue de Goblins',3,'','A',1),(91,'Cavaleiro',3,'','A',1),(92,'Princesa',3,'','A',3),(93,'Tronco',2,'','A',3),(94,'Espírito de Gelo',1,'','A',1);
 /*!40000 ALTER TABLE `cartas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +160,7 @@ CREATE TABLE `niveis` (
   `status` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nivel_UNIQUE` (`nivel`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `niveis` (
 
 LOCK TABLES `niveis` WRITE;
 /*!40000 ALTER TABLE `niveis` DISABLE KEYS */;
-INSERT INTO `niveis` VALUES (3,'1','Primeiro nível','A'),(4,'2','Segundo nivel','A'),(5,'3','','A'),(6,'4','','A'),(7,'5','','A'),(8,'6','','A'),(9,'7','','A'),(10,'8','','A'),(11,'9','','A'),(12,'10','','A'),(13,'11','','A'),(14,'12','','A'),(15,'13','','A');
+INSERT INTO `niveis` VALUES (3,'1','Primeiro nível','A'),(4,'2','Segundo nivel','A'),(5,'3','','A'),(6,'4','','A'),(7,'5','','A'),(8,'6','','A'),(9,'7','','A'),(10,'8','','A'),(11,'9','','A'),(12,'10','','A'),(13,'11','','A'),(14,'12','','A'),(15,'13','','A'),(16,'14','','A');
 /*!40000 ALTER TABLE `niveis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,7 @@ CREATE TABLE `personagens` (
   `status` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nome_UNIQUE` (`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `personagens` (
 
 LOCK TABLES `personagens` WRITE;
 /*!40000 ALTER TABLE `personagens` DISABLE KEYS */;
-INSERT INTO `personagens` VALUES (1,'Goblin','Personagem Verde','A'),(2,'Gigante','Grande','A');
+INSERT INTO `personagens` VALUES (1,'Goblin','Personagem Verde','A'),(2,'Gigante','Grande','A'),(4,'Espelho','','A'),(5,'Esqueleto','','A'),(6,'Bola de Neve','','A'),(8,'Bárbaro','','A'),(9,'Barril de Bárbaro','','A'),(10,'Zap','','A'),(11,'Fúria','','A'),(12,'Morcego','','A'),(13,'Golen de Gelo','','A'),(14,'Espírito de Fogo','','A'),(15,'Goblin Lanceiro','','A'),(16,'Bombardeiro','','A'),(17,'Cura','','A'),(18,'Clone','','A'),(19,'Servo','','A'),(20,'Flechas','','A'),(21,'Lápide','','A'),(22,'Canhão','','A'),(23,'Barril de Esqueletos','','A'),(24,'Fantasma Real','','A'),(25,'Bandida','','A'),(26,'Mago de Gelo','','A'),(27,'Arqueira','','A'),(28,'Guarda','','A'),(29,'Goblin com Dardo','','A'),(30,'Megasservo','','A'),(31,'Mineiro','','A'),(32,'Caçador','','A'),(33,'Mosqueteira','','A'),(34,'Mini P.E.K.K.A','','A'),(35,'Fornalha','','A'),(36,'Lenhador','','A'),(37,'Aríete de Batalha','','A'),(38,'Dragão Infernal','','A'),(39,'Tesla','','A'),(40,'Dragão Bebê','','A'),(41,'Príncipe das Trevas','','A'),(42,'Mago Elétrico','','A'),(43,'Bola de Fogo','','A'),(44,'Veneno','','A'),(45,'Torre de Bombas','','A'),(46,'Morteiro','','A'),(47,'Valquíria','','A'),(48,'Bruxa Sombria','','A'),(49,'Arqueiro Mágico','','A'),(50,'Corredor','','A'),(51,'Eletrocutadores','','A'),(52,'Máquina Voadora','','A'),(53,'Gelo','','A'),(54,'Carrinho de Canhão','','A'),(55,'Balão','','A'),(56,'Patifa','','A'),(57,'Patife','','A'),(58,'Porcos Reais','','A'),(59,'Mago','','A'),(60,'Bruxa','','A'),(61,'Príncipe','','A'),(62,'Cabana de Goblins','','A'),(63,'Torre Inferno','','A'),(64,'Executor','','A'),(65,'Cemitério','','A'),(67,'Lançador','','A'),(69,'X-Besta','','A'),(70,'Coletor de Elixir','','A'),(71,'Goblin Gigante','','A'),(72,'Esqueleto Gigante','','A'),(73,'Relâmpago','','A'),(74,'Gigante Real','','A'),(75,'Bárbaro de Elite','','A'),(76,'Sparky','','A'),(77,'Cabana de Bárbaros','','A'),(78,'Megacavaleiro','','A'),(79,'P.E.K.K.A','','A'),(80,'Lava Hound','','A'),(81,'Recruta Real','','A'),(82,'Lava Pup','','A'),(83,'Golem','','A'),(84,'Golemita','','A'),(85,'Foguete','','A'),(86,'Tornado','','A'),(87,'Barril de Goblins','','A'),(88,'Cavaleiro','','A'),(89,'Princesa','','A'),(90,'Tronco','','A'),(91,'Espírito de Gelo','','A');
 /*!40000 ALTER TABLE `personagens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `raridades` (
   `descricao` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `status` char(1) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `raridades` (
 
 LOCK TABLES `raridades` WRITE;
 /*!40000 ALTER TABLE `raridades` DISABLE KEYS */;
-INSERT INTO `raridades` VALUES (1,'Comum','Grupo comum de cartas','A'),(2,'Rara','Grupo de cartas raras','A'),(3,'Lendária','Grupo de cartas lendárias','A');
+INSERT INTO `raridades` VALUES (1,'Comum','Grupo comum de cartas','A'),(2,'Rara','Grupo de cartas raras','A'),(3,'Lendária','Grupo de cartas lendárias','A'),(4,'Épica','','A');
 /*!40000 ALTER TABLE `raridades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,4 +368,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-19 11:51:40
+-- Dump completed on 2018-09-19 18:34:30

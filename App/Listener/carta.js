@@ -49,10 +49,11 @@ function grid() {
                         '</tr>';
                 });
 
-                $('.grid').html(tbody);
+                
             } else if (data.MSN) {
                 mensagem('Erro', data.msnErro, '', '');
             }
+            $('.grid').html(tbody);
         }
     }).done(function () {
         $('#table_principal').DataTable();

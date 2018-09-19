@@ -43,6 +43,7 @@ function grid() {
                 $.each(data.result, function (key, value) {
 
                     tbody += '<tr>' +
+                    '<td width="60%">' + value.id + '</td>' +
                         '<td width="60%">' + value.nome + '</td>' +
                         '<td width="10%">' + value.descricao + '</td>' +
                         '<td width="10%">' + value.status + '</td>' +
@@ -92,7 +93,6 @@ function grid_habilidades() {
                         '<td width="10%">' + value.nivel + '</td>' +
                         '<td width="10%">' + value.habilidade + '</td>' +
                         '<td width="10%">' + value.valor + '</td>' +
-                        '<td width="10%" class="update_habilidade_personagem" data-idpersonagem="' + value.id_personagem + '" data-idhabilidade="' + value.id_habilidade + '" data-idnivel="' + value.id_nivel + '"></td>' +
                         '<td width="10%" class="delete_habilidade_personagem" data-idpersonagem="' + value.id_personagem + '" data-idhabilidade="' + value.id_habilidade + '" data-idnivel="' + value.id_nivel + '"></td>' +
                         '</tr>';
                 });

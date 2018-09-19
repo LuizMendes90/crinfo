@@ -20,6 +20,7 @@
                        width="100%">
                     <thead>
                     <tr>
+                        <th>Código</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Status</th>
@@ -33,6 +34,7 @@
                     </tbody>
                     <tfoot>
                     <tr>
+                        <th>Código</th>
                         <th>Nome</th>
                         <th>Descrição</th>
                         <th>Status</th>
@@ -168,7 +170,6 @@
                                     <th>Nível</th>
                                     <th>Habilidade</th>
                                     <th>Valors</th>
-                                    <th>Alterar</th>
                                     <th>Deletar</th>
                                 </tr>
                                 </thead>
@@ -180,7 +181,6 @@
                                     <th>Nível</th>
                                     <th>Habilidade</th>
                                     <th>Valors</th>
-                                    <th>Alterar</th>
                                     <th>Deletar</th>
                                 </tr>
                             </table>

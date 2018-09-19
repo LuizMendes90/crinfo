@@ -127,7 +127,7 @@ class Personagem extends Model
     public function getAll()
     {
 
-        $sql = "SELECT * FROM `" . $this->table."`";
+        $sql = "SELECT * FROM `" . $this->table."` order by id desc";
 
         $query = $this->dbh->prepare($sql);
 
