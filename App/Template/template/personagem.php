@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<div class="modal fade modal_principal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade modal_principal" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -105,7 +105,7 @@
 <input type="hidden" id="id_nivel_habilidade">
 <input type="hidden" id="id_habilidade_habilidade">
 
-<div class="modal fade modal_habilidades" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade modal_habilidades" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 

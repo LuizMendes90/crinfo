@@ -122,7 +122,7 @@
     </div>
 </div>
 
-<div class="modal fade modal_composicao" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade modal_composicao"  role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
