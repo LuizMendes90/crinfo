@@ -262,22 +262,6 @@ function create_cliente(formData) {
     });
 }
 
-$("#form-cliente").submit(function (e) {
-
-    e.preventDefault();
-
-    var formData = new FormData();
-
-    formData = load_fields(formData, interact_fields_cliente);
-
-    formData.append('status', 'A');
-    formData.append('email', $("#nome_reduzido").val().replace(" ", "") + "@" + $("#nome_reduzido").val().replace(" ", "") + ".com.br");
-    formData.append('senha', "cliente");
-    formData.append('tipo_pessoa', "Jurídica");
-
-    create_cliente(formData);
-
-});
 
 $(document).on('click', '.save_cliente', function () {
 
