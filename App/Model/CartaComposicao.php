@@ -149,7 +149,7 @@ class CartaComposicao extends Model
     public function getAllJoin()
     {
 
-       $sql = "SELECT cco.*,per.nome FROM `" . $this->table."` cco
+       $sql = "SELECT cco.*,per.nome,car.nome as nome_carta FROM `" . $this->table."` cco
                 INNER JOIN personagens per
                 on cco.id_personagem = per.id
                 INNER JOIN cartas car
@@ -165,6 +165,7 @@ class CartaComposicao extends Model
         if ($result['status'] && $result['count']) {
 
             for ($i = 0; $linha = $query->fetch(PDO::FETCH_ASSOC); $i++) {
+                $array[$i]['carta'] = $linha['nome_carta'];
                 $array[$i]['id_personagem'] = $linha['id_personagem'];
                 $array[$i]['id_carta'] = $linha['id_carta'];
                 $array[$i]['personagem'] = $linha['nome'];

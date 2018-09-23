@@ -130,9 +130,20 @@
                             <i class="fa fa-plus">
                             </i>
                         </a>
+                        <a class="remover_cartas">
+                            <i class="fa fa-minus">
+                            </i>
+                        </a>
                     </div>                            
                 </div>
-                <input type="hidden" id="id_carta_campo">
+
+                <div class="container" id="table_comparacao">
+                
+                </div>
+
+                <input type="hidden" id="id_carta_escolhida">
+                <input type="hidden" id="campo">
+                <input type="hidden" id="id_deck">
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

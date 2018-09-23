@@ -58,6 +58,21 @@ class Deck extends Controller
         echo json_encode($result);
     }
 
+
+    public function updateCarta($object)
+    {
+
+        $this->oModel->transection();
+
+        $this->oModel->populate($object);
+
+        $result = $this->oModel->updateCarta();
+
+        $this->oModel->commit();
+
+        echo json_encode($result);
+    }
+
     public function delete($object)
     {
         $this->oModel->transection();
@@ -73,7 +88,17 @@ class Deck extends Controller
 
     public function getAll()
     {
+
+
+
         $result = $this->oModel->getAll();
+
+        echo json_encode($result);
+    }
+
+    public function getAllJoin()
+    {
+        $result = $this->oModel->getAllJoin();
 
         echo json_encode($result);
     }
