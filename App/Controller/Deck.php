@@ -19,7 +19,7 @@ class Deck extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->server = "http://localhost/crinfodeck/App/Core/App.php";
+        $this->server = "http://10.0.1.69:8989/crinfodeck/App/Core/App.php";
 
     }
 
