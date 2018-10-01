@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 require_once CORE . DS . 'Controller.php';
-require_once MODEL . DS . 'Deck.php';
-require_once VIEW . DS . 'Deck.php';
+require_once MODEL . DS . 'Carta.php';
 
 use App\Core\Controller;
 use App\Core\Model;
-use App\Model\Deck as Deck_Model;
-use App\View\Deck as Deck_View;
+use App\Model\Carta as Carta_Model;
 
 class Deck extends Controller
 {
@@ -21,9 +19,6 @@ class Deck extends Controller
     {
         parent::__construct();
 
-        $this->oModel = new Deck_Model();
-
-        $this->oView = new Deck_View();
     }
 
     public function render()
@@ -33,57 +28,87 @@ class Deck extends Controller
 
     public function create($object)
     {
-        $this->oModel->transection();
+     
+        $object['action'] = "Deck";
+        $object['method'] = "create";
 
-        $this->oModel->populate($object);
+        $object = json_encode($object);
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
 
-        $result = $this->oModel->create();
+        $curl = curl_init($server);
 
-        $this->oModel->commit();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        echo json_encode($result);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
+        
     }
 
     public function update($object)
     {
 
-        $this->oModel->transection();
+        $object['action'] = "Deck";
+        $object['method'] = "update";
 
-        $this->oModel->populate($object);
+        $object = json_encode($object);
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
 
-        $result = $this->oModel->update();
+        $curl = curl_init($server);
 
-        $this->oModel->commit();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        echo json_encode($result);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
     }
 
 
     public function updateCarta($object)
     {
 
-        $this->oModel->transection();
+        $object['action'] = "Deck";
+        $object['method'] = "updateCarta";
 
-        $this->oModel->populate($object);
+        $object = json_encode($object);
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
 
-        $result = $this->oModel->updateCarta();
+        $curl = curl_init($server);
 
-        $this->oModel->commit();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        echo json_encode($result);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
     }
 
     public function delete($object)
     {
-        $this->oModel->transection();
+        $object['action'] = "Deck";
+        $object['method'] = "delete";
 
-        $this->oModel->populate($object);
+        $object = json_encode($object);
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
 
-        $result = $this->oModel->delete();
+        $curl = curl_init($server);
 
-        $this->oModel->commit();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        echo json_encode($result);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
     }
 
     public function getAll()
@@ -91,46 +116,125 @@ class Deck extends Controller
 
 
 
-        $result = $this->oModel->getAll();
 
-        echo json_encode($result);
+        $object['action'] = "Deck";
+        $object['method'] = "getAll";
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
+
+        $curl = curl_init($server);
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
     }
 
     public function getAllJoin()
     {
-        $result = $this->oModel->getAllJoin();
 
-        echo json_encode($result);
+        $arrayRetorno = array();
+
+        $oMCarta = new Carta_Model();
+
+        $resultCartas = $oMCarta->getAll();
+
+        $object = array();
+        $object['action'] = "Deck";
+        $object['method'] = "getAllJoin";
+        
+        $arrayCartas = array();
+        $resultCartas = $resultCartas['result'];
+
+        foreach($resultCartas as $value){
+            $id = $value['id'];
+            $nome = $value['nome'];
+            $arrayCartas[$id] = $nome;
+        }
+        
+        $object = json_encode($object);
+
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
+
+        $curl = curl_init($server);
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+         $result = curl_exec($curl);
+
+        $retorno = json_decode($result);
+
+        $retorno = $retorno->result;
+
+        $arrayTemp = array();
+        $i = 0;
+        foreach($retorno as $ret){
+            
+                $arrayTemp[$i]['id'] = $ret->id;
+                $arrayTemp[$i]['deck'] = $ret->deck;
+                $arrayTemp[$i]['status'] = $ret->status;
+                if ($ret->carta_1){
+                   $arrayTemp[$i]['carta_1'] = $arrayCartas[$ret->carta_1];
+                }
+                if ($ret->carta_2){
+                    $arrayTemp[$i]['carta_2'] = $arrayCartas[$ret->carta_2];
+                 }
+                 if ($ret->carta_3){
+                    $arrayTemp[$i]['carta_3'] = $arrayCartas[$ret->carta_3];
+                 }
+                 if ($ret->carta_4){
+                    $arrayTemp[$i]['carta_4'] = $arrayCartas[$ret->carta_4];
+                 }
+                 if ($ret->carta_5){
+                    $arrayTemp[$i]['carta_5'] = $arrayCartas[$ret->carta_5];
+                 }
+                 if ($ret->carta_6){
+                    $arrayTemp[$i]['carta_6'] = $arrayCartas[$ret->carta_6];
+                 }
+                 if ($ret->carta_7){
+                    $arrayTemp[$i]['carta_7'] = $arrayCartas[$ret->carta_7];
+                 }
+                 if ($ret->carta_8){
+                    $arrayTemp[$i]['carta_8'] = $arrayCartas[$ret->carta_8];
+                 }
+         
+            
+            $i++;
+        }
+        $array['result'] = $arrayTemp;
+        $array['status'] = true;
+        $array['MSN'] = '';
+        $array['count'] = $i;
+        // print_r($retorno);
+        echo json_encode($array);
     }
 
     public function getById($object)
     {
 
-        $this->oModel->populate($object);
+        $object['action'] = "Deck";
+        $object['method'] = "getById";
 
-        $result = $this->oModel->getById();
+        $object = json_encode($object);
+ 
+        $server = "http://localhost/crinfodeck/App/Core/App.php";
 
-        echo json_encode($result);
+        $curl = curl_init($server);
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $object);
+
+        $result = curl_exec($curl);
+
+        echo $result;
     }
 
-    public function getLogin()
-    {
-        $result = $this->oModel->getLogin();
-
-        return $result;
-    }
-
-    public function getLoginCliente()
-    {
-        $result = $this->oModel->getLoginCliente();
-
-        return $result;
-    }
-
-    public function populate($object)
-    {
-        $this->oModel->populate($object);
-    }
 
 
 }
