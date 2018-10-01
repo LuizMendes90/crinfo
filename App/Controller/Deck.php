@@ -14,10 +14,12 @@ class Deck extends Controller
 
     private $oModel;
     private $oView;
+    private $server;
 
     public function __construct()
     {
         parent::__construct();
+        $this->server = "http://localhost/crinfodeck/App/Core/App.php";
 
     }
 
@@ -34,9 +36,9 @@ class Deck extends Controller
 
         $object = json_encode($object);
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -56,9 +58,9 @@ class Deck extends Controller
 
         $object = json_encode($object);
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -78,9 +80,9 @@ class Deck extends Controller
 
         $object = json_encode($object);
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -98,9 +100,9 @@ class Deck extends Controller
 
         $object = json_encode($object);
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -120,9 +122,9 @@ class Deck extends Controller
         $object['action'] = "Deck";
         $object['method'] = "getAll";
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -157,9 +159,9 @@ class Deck extends Controller
         
         $object = json_encode($object);
 
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -222,9 +224,9 @@ class Deck extends Controller
 
         $object = json_encode($object);
  
-        $server = "http://localhost/crinfodeck/App/Core/App.php";
+        
 
-        $curl = curl_init($server);
+        $curl = curl_init($this->server);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
